@@ -1,0 +1,119 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: radial-gradient(circle at top, #0f0f1a, #050510);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+}
+
+/* Subtle animated background glow */
+body::before {
+    content: "";
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: rgb(31, 243, 218);
+    filter: blur(180px);
+    opacity: 0.2;
+    animation: pulse 6s infinite alternate;
+}
+
+@keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.4); }
+}
+
+.game-container {
+    text-align: center;
+    z-index: 1;
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #a855f7, 0 0 20px #9333ea;
+}
+
+/* Grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 90px);
+    gap: 18px;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+/* Card Style */
+.card {
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(145deg, #111827, #1f2937);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    cursor: pointer;
+    transition: transform 0.8s ease, box-shadow 0.4s ease;
+    box-shadow: 0 0 8px #7c3aed;
+}
+
+/* Hover glow */
+.card:hover {
+    box-shadow: 0 0 15px #a855f7, 0 0 30px #7c3aed;
+    transform: scale(1.05);
+}
+
+/* Flipped (slow animation) */
+.card.flipped {
+    background: linear-gradient(145deg, #6d28d9, #6d28d9);
+    transform: rotateY(180deg);
+    box-shadow: 0 0 20px #c084fc;
+}
+
+/* Scoreboard */
+.score-board {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #fcfcfc;
+    text-shadow: 0 0 10px #e82323;
+}
+
+/* Disappear animation */
+.card.matched {
+    animation: disappear 0.8s forwards;
+}
+
+@keyframes disappear {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0);
+        visibility: hidden;
+    }
+}
+
+/* Restart Button */
+button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(45deg, #9333ea, #6d28d9);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s ease;
+    box-shadow: 0 0 10px #7c3aed;
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #a855f7;
+}
